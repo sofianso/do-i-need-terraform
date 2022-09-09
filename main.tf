@@ -7,15 +7,12 @@ terraform {
   }
 }
 
-# Configure the AWS Provider
-provider "aws" {
-  region     = "us-west-2"
-  access_key = "my-access-key"
-  secret_key = "my-secret-key"
+resource "aws_instance" "sofian-test-server" {
+  ami = "ami-0b55fc9b052b03618"
+  instance_type = "t2.micro"
 }
 
-
-resource "aws_instance" "sofian-test-server" {
-  ami = "amiID"
-  instance_type = "t2.micro"
+provider "aws" {
+  profile = "sofian-outlook"
+  region = "ap-southeast-2"
 }
